@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Teams</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Teams</h1>
+  <div id="teams"></div>
+
+  <script>
+    fetch('/data/teams.json')
+      .then(r => r.json())
+      .then(teams => {
+        const container = document.getElementById('teams');
+        teams.forEach(t => {
+          const div = document.createElement('div');
+          div.className = 'team-card';
+          div.innerHTML = `<h3>${t.name}</h3>` +
+                          (t.logo ? `<img src='${t.logo}' alt='' style='width:100%'>` : '') +
+                          `<p>Players: ${t.players.join(', ')}</p>`;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => document.getElementById('teams').innerText = 'Could not load teams.');
+  </script>
+</body>
+</html>
