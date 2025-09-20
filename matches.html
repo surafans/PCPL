@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Matches</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Matches / Fixtures</h1>
+  <table class="table" id="fixtures">
+    <thead><tr><th>ID</th><th>Date</th><th>Teams</th><th>Venue</th><th>Result</th></tr></thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    Promise.all([fetch('/data/teams.json').then(r=>r.json()), fetch('/data/matches.json').then(r=>r.json())])
+      .then(([teams, matches]) => {
+        const teamById = Object.fromEntries(teams.map(t=>[t.id, t.name]));
+        const tbody = document.querySelector('#fixtures tbody');
+        matches.forEach(m => {
+          const tr = document.createElement('tr');
+          const teamsText = `${teamById[m.teamA]} vs ${teamById[m.teamB]}`;
+          const resultText = m.result ? (`Winner: ${teamById[m.result.winner]} (${m.result.teamAScore} - ${m.result.teamBScore})`) : 'Not played';
+          tr.innerHTML = `<td>${m.id}</td><td>${m.date}</td><td>${teamsText}</td><td>${m.venue}</td><td>${resultText}</td>`;
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(e => document.querySelector('#fixtures tbody').innerHTML = '<tr><td colspan="5">Could not load matches</td></tr>');
+  </script>
+
+  <section style="margin-top:18px">
+    <h3>How to record a result (admin)</h3>
+    <ol>
+      <li>Edit <code>data/matches.json</code> on GitHub (open file → Edit).</li>
+      <li>Find the match and replace `"result": null` with the result object, for example:
+
+```json
+"result": { "winner": 2, "teamAScore": 120, "teamBScore": 121 }
