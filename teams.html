@@ -1,29 +1,110 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Teams</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <title>Our Current Teams | PCPL</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      background: linear-gradient(90deg, #ffb347, #ffcc33);
+      color: #222;
+      font-size: 2rem;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      letter-spacing: 2px;
+    }
+
+    nav {
+      margin: 20px 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      padding: 12px 25px;
+      margin: 0 10px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(6px);
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      background: #ffcc33;
+      color: #222;
+      transform: scale(1.05);
+    }
+
+    h1 {
+      margin: 30px 0 10px;
+      font-size: 2.2rem;
+      color: #ffcc33;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+
+    .teams-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .team-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 15px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: 0.3s;
+    }
+
+    .team-card:hover {
+      background: rgba(255, 204, 51, 0.8);
+      color: #222;
+      transform: translateY(-5px) scale(1.05);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 15px;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
-  <h1>Teams</h1>
-  <div id="teams"></div>
+  <header>PCPL</header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="teams.html">Teams</a>
+    <a href="matches.html">Matches</a>
+    <a href="points.html">Points Table</a>
+  </nav>
 
-  <script>
-    fetch('/data/teams.json')
-      .then(r => r.json())
-      .then(teams => {
-        const container = document.getElementById('teams');
-        teams.forEach(t => {
-          const div = document.createElement('div');
-          div.className = 'team-card';
-          div.innerHTML = `<h3>${t.name}</h3>` +
-                          (t.logo ? `<img src='${t.logo}' alt='' style='width:100%'>` : '') +
-                          `<p>Players: ${t.players.join(', ')}</p>`;
-          container.appendChild(div);
-        });
-      })
-      .catch(err => document.getElementById('teams').innerText = 'Could not load teams.');
-  </script>
+  <h1>Our Current Teams</h1>
+
+  <div class="teams-container">
+    <div class="team-card">BL</div>
+    <div class="team-card">PR</div>
+    <div class="team-card">ST.PS</div>
+    <div class="team-card">SM</div>
+    <div class="team-card">HN</div>
+    <div class="team-card">KA</div>
+  </div>
+
+  <footer>Made with ❤️ — Hosted on GitHub Pages</footer>
 </body>
 </html>
