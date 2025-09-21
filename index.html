@@ -3,30 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cricket Tournament Manager</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <title>PCPL</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 30px 10px;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 2px 2px 8px black;
+      margin-bottom: 20px;
+    }
+    nav {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 10px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      margin: 0 15px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .fade-text {
+      margin-top: 60px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      animation: fadeInOut 4s infinite;
+      color: #ffdf00;
+      text-shadow: 1px 1px 6px black;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Cricket Tournament Manager</h1>
+    <h1>PCPL</h1>
     <nav>
-      <a href="/">Home</a> |
-      <a href="/teams.html">Teams</a> |
-      <a href="/matches.html">Matches</a> |
+      <a href="/">Home</a>
+      <a href="/teams.html">Teams</a>
+      <a href="/matches.html">Matches</a>
       <a href="/points.html">Points Table</a>
     </nav>
   </header>
 
   <main>
-    <section>
-      <h2>Welcome</h2>
-      <p>Create and manage your tournament: add teams, schedule matches, enter results, and view the points table.</p>
-      <p>Small tournaments: edit the JSON files directly in GitHub to update teams/matches.</p>
-    </section>
+    <div class="fade-text">PCPL SEASON 3 coming soon 🔜</div>
   </main>
-
-  <footer>
-    <small>Made with ❤️ — Hosted on GitHub Pages</small>
-  </footer>
 </body>
 </html>
